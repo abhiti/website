@@ -1,5 +1,64 @@
 <!DOCTYPE html>
 <html>
+<style>
+@font-face {
+font-family: 'bahnschrift_regular';
+font-style: normal;
+font-weight: normal;
+src: local('bahnschrift_regular'), url('BAHNSCHRIFT.woff') format('woff');
+}
+.header{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: inherit;
+  height: inherit;
+  margin: 1em;
+}
+.header .name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33%;
+  height: fit-content;
+}
+.header .logo{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 33%;
+  height: inherit;
+}
+.header .logo a{
+  display: flex;
+  width: 12%;
+  height: auto;
+  padding: 0;
+}
+.header .logo img{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+
+img {
+  width: 20%;
+}
+a:link {
+  padding: 12px;
+  color:#3b3838;
+  text-decoration:none;
+}
+a:visited {
+  padding: 12px;
+  color:#3b3838;
+  text-decoration:none;
+}
+
+</style>
 <head>
   <title> AGV - Projects </title>
   <style>
@@ -8,44 +67,63 @@
 }
   a:link {
     padding: 12px;
-    color:#04663a;
+    color:#3b3838;
+    text-decoration:none;
+  }
+  a:visited {
+    padding: 12px;
+    color:#3b3838;
     text-decoration:none;
   }
 </style>
 </head>
+<div class="header">
+  <div class="logo">
+    <a href="index.html" style="color:#000000;">
+      <img src="images/favicon.png">
+    </a>
+  </div>
+  <div class="name">
+    <h1>Projects</h1>
+  </div>
+  <div class="name">
+  </div>
+</div>
 
-<body style="background-color:#b2a2c4;font-family:Bahnschrift;">
-  <div class="header-container">
-    <table style="width:55%">
-      <tr>
-        <td>
-          <a href="index.html" style="color:#000000;">
-            <img src="images/me.jpg"><b> ( Abhiti Garima Vaish )</b>
-          </a>
-        </td>
-        <td><h1> Projects </h1></td>
-    </tr>
-    </table>
-    </div>
-
-
-
-  <div class="main-container" style="font-family:Bahnschrift;text-align:center;">
+<body style="background-color:#f2f2f2;color:#3b3838;font-family:bahnschrift_regular;">
+  <div class="main-container" style="font-family:bahnschrift_regular;text-align:center;">
 
     <br> <br>
     <p>
-      Content under construction!<br>
-      Please refer to my <a href="https://www.linkedin.com/in/abhiti-vaish" style="padding:0px">LinkedIn profile</a>, for now.
+
+      <a href="https://github.com/dhruvika/LVTexting">
+        <img src="images/projects/sms.png" style="width:10%;padding:50px;">
+      </a>
+      <a href="https://github.com/abhiti/TheOtherHalf">
+        <img src="images/projects/toh.png" style="width:10%;padding:50px;">
+      </a>
+      <a href="https://www.youtube.com/watch?v=AShvhD1uE54">
+        <img src="images/projects/brainy.png" style="width:8%; padding:50px;">
+      </a>
+      <a href="https://twitter.com/teralytic/status/956276021678002176">
+        <img src="images/projects/tera.png" style="width:10%;padding:50px;">
+      </a>
+      <br><br>Please refer to my <a href="https://www.linkedin.com/in/abhiti-vaish" style="padding:0px">LinkedIn profile</a>
+      for more tid-bits about my projects!
     </p>
 
-    <br>
-    <img src="images/vineGIF.gif" style="width:20%">
+    <br><br>
+    <div class="links" style="color:#3b3838;">
+    <div class="arrows" style="color:#b2a2c4;">
     <br> <br> >
-    <a href="index.html"> <b>Home</b> </a> |
-    <a href="about.html"> <b>About</b> </a> |
-    <a href="resume.html"> <b>Resume</b> </a> |
-    <a href="projects.html"> <b>Projects</b> </a> |
+    <a href="index.html"> <b>Home</b> </a> <span style="color:#6d8641">|</span>
+    <a href="about.html"> <b>About</b> </a> <span style="color:#6d8641">|</span>
+    <a href="resume.html"> <b>Resume</b> </a> <span style="color:#6d8641">|</span>
+    <a href="projects.html"> <b>Projects</b> </a> <span style="color:#6d8641">|</span>
     <a href="contact.html"> <b>Contact</b> </a> <
+    </div>
+    </div>
+    <br><br>
   </div>
 </body>
 </html>

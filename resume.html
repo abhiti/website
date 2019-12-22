@@ -1,4 +1,63 @@
 <!DOCTYPE html>
+<style>
+@font-face {
+font-family: 'bahnschrift_regular';
+font-style: normal;
+font-weight: normal;
+src: local('bahnschrift_regular'), url('BAHNSCHRIFT.woff') format('woff');
+}
+.header{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: inherit;
+  height: inherit;
+  margin: 1em;
+}
+.header .name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33%;
+  height: fit-content;
+}
+.header .logo{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 33%;
+  height: inherit;
+}
+.header .logo a{
+  display: flex;
+  width: 12%;
+  height: auto;
+  padding: 0;
+}
+.header .logo img{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+
+img {
+  width: 20%;
+}
+a:link {
+  padding: 12px;
+  color:#3b3838;
+  text-decoration:none;
+}
+a:visited {
+  padding: 12px;
+  color:#3b3838;
+  text-decoration:none;
+}
+
+</style>
 <html>
 <head>
   <title> AGV - Resume </title>
@@ -8,29 +67,33 @@
 }
   a:link {
     padding: 12px;
-    color:#04663a;
+    color:#3b3838;
+    text-decoration:none;
+  }
+  a:visited {
+    padding: 12px;
+    color:#3b3838;
     text-decoration:none;
   }
 </style>
 </head>
-
-<body style="background-color:#b2a2c4;font-family:Bahnschrift;">
-  <div class="header-container">
-    <table style="width:54%">
-      <tr>
-        <td>
-          <a href="index.html" style="color:#000000;">
-            <img src="images/me.jpg"><b> ( Abhiti Garima Vaish )</b>
-          </a>
-        </td>
-        <td><h1> Resume </h1></td>
-    </tr>
-    </table>
-    </div>
-
+<div class="header">
+  <div class="logo">
+    <a href="index.html" style="color:#000000;">
+      <img src="images/favicon.png">
+    </a>
+  </div>
+  <div class="name">
+    <h1>Resume</h1>
+  </div>
+  <div class="name">
+  </div>
+</div>
+<body style="background-color:#f2f2f2;color:#3b3838;font-family:bahnschrift_regular;">
 
 
-  <div class="main-container" style="font-family:Bahnschrift;text-align:center;">
+
+  <div class="main-container" style="font-family:bahnschrift_regular;text-align:center;">
 
     <br> <br>
 
@@ -39,14 +102,18 @@
 
 
 
-    <br>
-    <img src="images/vineGIF.gif" style="width:20%">
+    <br><br><br><br>
+    <div class="links" style="color:#3b3838;">
+    <div class="arrows" style="color:#b2a2c4;">
     <br> <br> >
-    <a href="index.html"> <b>Home</b> </a> |
-    <a href="about.html"> <b>About</b> </a> |
-    <a href="resume.html"> <b>Resume</b> </a> |
-    <a href="projects.html"> <b>Projects</b> </a> |
+    <a href="index.html"> <b>Home</b> </a> <span style="color:#6d8641">|</span>
+    <a href="about.html"> <b>About</b> </a> <span style="color:#6d8641">|</span>
+    <a href="resume.html"> <b>Resume</b> </a> <span style="color:#6d8641">|</span>
+    <a href="projects.html"> <b>Projects</b> </a> <span style="color:#6d8641">|</span>
     <a href="contact.html"> <b>Contact</b> </a> <
+    </div>
+    </div>
+    <br><br>
   </div>
   <br><br>
 </body>
