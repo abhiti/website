@@ -1,0 +1,198 @@
+html {
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'Barlow', sans-serif;
+  color: #FFFFFF;
+}
+
+a:link {
+  color:#FFFFFF;
+  text-decoration:none;
+}
+a:visited {
+  color:#FFFFFF;
+  text-decoration:none;
+}
+
+.background img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+@media only screen and (max-width: 1200px) {
+  .background img {
+    width: auto;
+    height: -webkit-fill-available;
+    height: -moz-available;          /* WebKit-based browsers will ignore this. */
+    height: fill-available;
+    max-width:auto;
+    max-height:100%;
+    margin:auto;
+    overflow:auto;
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+  }
+}
+
+header{
+  display: flex;
+  flex-direction: row;
+  font-weight: 900;
+  font-size: 75px;
+  justify-content: space-between;
+}
+
+header .nav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+header .nav a{
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+header .nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: #72009B;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color:#364F16;
+}
+
+body .content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 25px;
+  margin-left: 12%;
+  margin-right: 12%;
+  justify-content: center;
+}
+
+body .content .img-container {
+  display: flex;
+  width: 175px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 50px;
+}
+
+body .content .img-container img{
+  width:100%;
+  cursor:pointer;
+}
+
+body .content .overlay {
+  position: fixed;
+  width: 80%;
+  height: 75%;
+  top: 15%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  background-color: #FFFFFF;
+  z-index: 1;
+  border-radius: 25px;
+  border: 5px solid #72009B;
+  visibility: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+body .content .overlay .logo-container{
+  display: flex;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 50px;
+}
+
+body .content .overlay .logo-container img{
+  width:100%
+}
+
+body .content .overlay .description{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  color: #000000;
+  font-family: 'Barlow', sans-serif;
+  /* align-content: center; */
+  align-items: center;
+  justify-content: space-between;
+  margin: 5%;
+
+}
+
+body .content .overlay .description .title{
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+  font-size: 50px;
+  text-align: center;
+}
+
+body .content .overlay .description .caption{
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: 30px;
+  text-align: center;
+}
+
+body .content .overlay .description .links{
+  display: flex;
+  flex-direction: row;
+  font-weight: 400;
+  font-size: 25px;
+  text-align: center;
+  color: #72009B;
+  justify-content: space-evenly;
+  width:100%;
+}
+
+
+body .content .overlay .description a:link {
+  color:#000000;
+  text-decoration:none;
+}
+body .content .overlay .description a:visited {
+  color:#000000;
+  text-decoration:none;
+}
+
+body .content .overlay .description a:hover {
+  text-decoration: underline;
+  text-decoration-color: #72009B;
+}
+
+body .content .overlay .x{
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  top: 15%;
+  right: 10%;
+  color: #000000;
+  z-index: 2;
+  font-weight: 900;
+  font-size: 50px;
+  cursor:pointer;
+}

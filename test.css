@@ -1,8 +1,0 @@
-.fullContainer{
-  display:flex;
-  flex-direction:column;
-}
-.fullContainer .header{
-  flex-direction:row;
-  align-items:center;
-}
