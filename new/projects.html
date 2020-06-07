@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<div class="background">
+  <img src="media/backgrounds/projects.jpg" >
+</div>
+
+<head>
+  <meta charset = "UTF-8">
+  <title>Abhiti | Projects</title>
+  <link rel = "stylesheet"
+    type = "text/css"
+    href = "style/projects-style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<header>
+  <a href="index.html" style="text-decoration: underline;text-decoration-color: #72009B;">Abhiti Vaish</a>
+  <div class="nav">
+    <a href="about.html">about</a>
+    <a href="resume.html">resume</a>
+    <a href="projects.html" style="text-decoration: underline;text-decoration-color: #72009B;">projects</a>
+    <a href="contact.html">contact</a>
+  </div>
+</header>
+
+<script>
+function openOverlay(overlayID) {
+  var x = document.getElementById(overlayID);
+  x.style.visibility = "visible";
+}
+
+function closeOverlay(overlayID) {
+  var x = document.getElementById(overlayID);
+  x.style.visibility = "hidden";
+}
+</script>
+
+<body>
+  <br><br>
+  <div class="content">
+    <div class="img-container" onclick="openOverlay('aux-overlay')">
+      <img src="media/projects/aux.png" alt="auxiliary cable plug">
+    </div>
+    <div class="img-container" onclick="openOverlay('rho-overlay')">
+      <img src="media/projects/rho.png" alt="Rho">
+    </div>
+    <div class="img-container" onclick="openOverlay('sms-overlay')">
+      <img src="media/projects/SMS.png" alt="panda">
+    </div>
+    <div class="img-container" onclick="openOverlay('toh-overlay')">
+      <img src="media/projects/TOH.png" alt="half of a grilled cheese sandwich">
+    </div>
+    <div class="img-container" onclick="openOverlay('brainyBackpack-overlay')">
+      <img src="media/projects/brainyBackpack.png" alt="backpack with a brain-like cloth pattern">
+    </div>
+    <div class="img-container" onclick="openOverlay('teralytic-overlay')">
+      <img src="media/projects/teralytic.png" alt="teralytic company logo (abstract roots)">
+    </div>
+
+    <div class="overlay" id="aux-overlay">
+      <div class="x" onclick="closeOverlay('aux-overlay')">
+        x
+      </div>
+      <div class="logo-container">
+        <img src="media/projects/aux.png" alt="auxiliary cable plug">
+      </div>
+      <div class="description">
+        <div class="title">
+          AUX
+        </div>
+        <div class="caption">
+          A democratic real-time song queuing device-agnostic platform. Combine subscriptions from various music streaming platforms to maximize song diversity!
+        </div>
+        <div class="links">
+          <a href="http://master.d37782524mbgqg.amplifyapp.com/">DEMO</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="overlay" id="rho-overlay">
+      <div class="x" onclick="closeOverlay('rho-overlay')">
+        x
+      </div>
+      <div class="logo-container">
+        <img src="media/projects/rho.png" alt="Rho">
+      </div>
+      <div class="description">
+        <div class="title">
+          Rho
+        </div>
+        <div class="caption">
+          A novel fixed-volume buoyancy control device for scuba divers looking to reduce gear bulkiness.
+        </div>
+        <div class="links">
+          <a href="https://vimeo.com/379304064">PRESENTATION</a>
+          /
+          <a href="https://rho.pink/">WEBSITE</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="overlay" id="sms-overlay">
+      <div class="x" onclick="closeOverlay('sms-overlay')">
+        x
+      </div>
+      <div class="logo-container">
+        <img src="media/projects/SMS.png" alt="panda">
+      </div>
+      <div class="description">
+        <div class="title">
+          So Much Simplicity (SMS)
+        </div>
+        <div class="caption">
+          An Android texting app designed for individuals with low vision, empowering them with the ability to customize the visual and auditory preferences, as they see fit.
+        </div>
+        <div class="links">
+          <a href="https://github.com/dhruvika/LVTexting">REPO</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="toh-overlay">
+      <div class="x" onclick="closeOverlay('toh-overlay')">
+        x
+      </div>
+      <div class="logo-container">
+        <img src="media/projects/TOH.png" alt="half of a grilled cheese sandwich">
+      </div>
+      <div class="description">
+        <div class="title">
+          The Other Half
+        </div>
+        <div class="caption">
+          An Android app to enhance couples' productivity, offering them a space to collaboratively construct a "Bucket List" as well as a realistic planner.
+        </div>
+        <div class="links">
+          <a href="https://github.com/abhiti/TheOtherHalf">REPO</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="brainyBackpack-overlay">
+      <div class="x" onclick="closeOverlay('brainyBackpack-overlay')">
+        x
+      </div>
+      <div class="logo-container">
+        <img src="media/projects/brainyBackpack.png" alt="backpack with a brain-like cloth pattern">
+      </div>
+      <div class="description">
+        <div class="title">
+          Brainy Backpack
+        </div>
+        <div class="caption">
+          A smart backpack that alerts the owner if they forgot to pack a necessary item for an upcoming agenda item. Brainy Backpack functions using RFID reading capability and an Android app.
+        </div>
+        <div class="links">
+          <a href="https://www.youtube.com/watch?v=AShvhD1uE54">VIDEO</a>
+          /
+          <a href="media/projects/brainyBackpackSite/webpage.html">WEBSITE</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="teralytic-overlay">
+      <div class="x" onclick="closeOverlay('teralytic-overlay')">
+        x
+      </div>
+      <div class="logo-container">
+        <img src="media/projects/teralytic.png" alt="teralytic company logo (abstract roots)">
+      </div>
+      <div class="description">
+        <div class="title">
+          Teralytic
+        </div>
+        <div class="caption">
+          An Alexa skill that displays Teralytic's unique NPK (and other) sensor capabilities. With this skill, farmers can query their Alexa devices about their soil's health, before even stepping out of their homes!
+        </div>
+        <div class="links">
+          <a href="https://twitter.com/teralytic/status/956276021678002176">TWEET</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</body>
+
+</html>
