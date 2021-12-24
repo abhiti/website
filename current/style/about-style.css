@@ -103,6 +103,7 @@ body .content .map .entry {
 body .content .map .entry img{
   display: flex;
   width:400px;
+  height: 300px;
 }
 
 body .content .map .entry .entry-component {

@@ -47,9 +47,9 @@ GitHub Organization: https://github.mit.edu/6-08DesignProject
 
 As sleep-deprived MIT students, many of us sleep until the last possible minute and often forget to bring certain things to class in our rushed frenzy to get to class on time. Every student has experienced the feeling of horror as they reach into their backpack, only to realize they left it back at their dorm.
 
- Thus far, students have had no defense mechanism against this and have suffered the academic and/or humiliating consequences of their forgetfulness. Our project, Brainy Backpack, aims to combat this. The Brainy Backpack is… well… a backpack with a brain - that is, a backpack that comes equipped with an RFID reader that is used in conjunction with a database and Google Calendar. Simply record your schedule with Google Calendar, attach small RFID stickers to items you need, and identify what they’re needed for using our Android application linked to your calendar.
+ Thus far, students have had no defense mechanism against this and have suffered the academic and/or humiliating consequences of their forgetfulness. Our project, Brainy Backpack, aims to combat this. The Brainy Backpack is... well... a backpack with a brain - that is, a backpack that comes equipped with an RFID reader that is used in conjunction with a database and Google Calendar. Simply record your schedule with Google Calendar, attach small RFID stickers to items you need, and identify what they're needed for using our Android application linked to your calendar.
 
- Pressing a button on the backpack will let you know if you're ready to go. If you happen to forget to do that too, our backpack will alert you 30 minutes before your first class begins if you’re missing something via a push notification to your phone!
+ Pressing a button on the backpack will let you know if you're ready to go. If you happen to forget to do that too, our backpack will alert you 30 minutes before your first class begins if you're missing something via a push notification to your phone!
 
 ##The Birth of an Idea and its Growth
 
@@ -128,7 +128,7 @@ The video starts off with the user scanning a new item for their 6.08 class: a b
       .
   ```
 
-  (Rest of code can be found on our GitHub.) These requests are made when items are being checked in or out of the bag. The ESP32 sends a POST request with two parameters in the body: “device = ESP” and “rfid = [RFID of the scanned item as a string]”. Using the provided RFID, an attempt is made to fetch the table entry for that RFID. If the RFID was not in the table, an entry is made for the RFID but with no class or nickname associations. If it was previously in the table, the previous entry is replaced with a new one which has a flipped value for its location in reference to the bag. Using this new entry for the RFID, the location status is fetched and a return string is formed. Using the item’s nickname if possible, a string is returned indicating the location of the item.
+  (Rest of code can be found on our GitHub.) These requests are made when items are being checked in or out of the bag. The ESP32 sends a POST request with two parameters in the body: "device = ESP" and "rfid = [RFID of the scanned item as a string]". Using the provided RFID, an attempt is made to fetch the table entry for that RFID. If the RFID was not in the table, an entry is made for the RFID but with no class or nickname associations. If it was previously in the table, the previous entry is replaced with a new one which has a flipped value for its location in reference to the bag. Using this new entry for the RFID, the location status is fetched and a return string is formed. Using the item's nickname if possible, a string is returned indicating the location of the item.
 
   <u>Android POST Requests:</u>
 
@@ -139,7 +139,7 @@ The video starts off with the user scanning a new item for their 6.08 class: a b
     .
   ```
 
-  (Rest of code can be found on our GitHub.) Continued underneath code from block above. These requests are made when the user is altering associations between RFIDs and events/nicknames on the Android application. The Android device sends a POST request with three parameters in the body: “rfid = [RFID of a tag]”, “course = [name of event from calendar]”, and “nickname = [nickname of item attached to RFID tag]”. The RFID and course selections are limited to RFIDs that are stored in the database (ones that have been scanned before) and events that occur within a given timeframe in the user’s calendar (events that have <i>end times</i> within the last 30 minutes or have <i>start times</i> within the next week). The previous entry for the RFID in the table is deleted and replaced with new information, so that only one copy of each RFID is stored at any point in time.
+  (Rest of code can be found on our GitHub.) Continued underneath code from block above. These requests are made when the user is altering associations between RFIDs and events/nicknames on the Android application. The Android device sends a POST request with three parameters in the body: "rfid = [RFID of a tag]", "course = [name of event from calendar]", and "nickname = [nickname of item attached to RFID tag]". The RFID and course selections are limited to RFIDs that are stored in the database (ones that have been scanned before) and events that occur within a given timeframe in the user's calendar (events that have <i>end times</i> within the last 30 minutes or have <i>start times</i> within the next week). The previous entry for the RFID in the table is deleted and replaced with new information, so that only one copy of each RFID is stored at any point in time.
 
   <u>ESP32 GET Requests:</u>
 
@@ -156,23 +156,23 @@ The video starts off with the user scanning a new item for their 6.08 class: a b
 
   ```
 
-  (Rest of code can be found on our GitHub.) These requests are made when the user performs a manual check by pressing a button on the backpack, and at 3 minute intervals for automatic timed checks by the ESP32 to see if items are missing for an upcoming event. To make a GET request from the ESP32, two parameters are required: “device = ESP” and “request = [“check” or “timed”]”. Whenever a GET request is made, the user’s Google Calendar needs to be accessed so that upcoming events can be compared with the contents of the user’s bag. On a separate script, <b>token.py</b>, a refresh token is used to obtain a valid access token to interface with the Calendar API, if a valid token does not already exist in the database. The token is stored with an RFID value of ‘8080’ - this “RFID” is filtered out when returning RFID statuses since it does not correspond to an RFID tag but is instead used for ease of persistent storage.
+  (Rest of code can be found on our GitHub.) These requests are made when the user performs a manual check by pressing a button on the backpack, and at 3 minute intervals for automatic timed checks by the ESP32 to see if items are missing for an upcoming event. To make a GET request from the ESP32, two parameters are required: "device = ESP" and "request = ["check" or "timed"]". Whenever a GET request is made, the user's Google Calendar needs to be accessed so that upcoming events can be compared with the contents of the user's bag. On a separate script, <b>token.py</b>, a refresh token is used to obtain a valid access token to interface with the Calendar API, if a valid token does not already exist in the database. The token is stored with an RFID value of '8080' - this "RFID" is filtered out when returning RFID statuses since it does not correspond to an RFID tag but is instead used for ease of persistent storage.
 
-  If an access token exists in the database but has expired, the API call that has its return dictionary stored in the variable test will contain a key of ‘error’. If we discover this erroneous response, <b>token.py</b> is called to fetch a new, valid token and the previous access token is replaced in the database. Once we have obtained a valid access token to make API calls with, we move on to the portion of code that specifically handles either an ESP32-directed call or an Android-directed call.
+  If an access token exists in the database but has expired, the API call that has its return dictionary stored in the variable test will contain a key of 'error'. If we discover this erroneous response, <b>token.py</b> is called to fetch a new, valid token and the previous access token is replaced in the database. Once we have obtained a valid access token to make API calls with, we move on to the portion of code that specifically handles either an ESP32-directed call or an Android-directed call.
 
-  To fetch the events from the user’s calendar that fall within the previously specified time range, an API call is made via a GET request to the following URL:
+  To fetch the events from the user's calendar that fall within the previously specified time range, an API call is made via a GET request to the following URL:
 
   https://www.googleapis.com/calendar/v3/calendars/mccoypatino@gmail.com/events?maxResults=2000&singleEvents=True&timeMin=" + str((datetime.datetime.utcnow() - datetime.timedelta(minutes=1000)).isoformat()) + "Z&timeMax=" + str((datetime.datetime.utcnow() + datetime.timedelta(minutes=10080)).isoformat()) + "Z&access_token=" + token
 
   There are a number of parameters in the call that must be included in order to produce the desired response. The formatting of the call is set up according to the specifications found at the following URL: https://developers.google.com/calendar/v3/reference/events/list. The response is in the form of a dictionary, which we convert into a JSON object for indexing.
 
-  For each event returned, we convert its starting time into a Python datetime object in order to determine if the event occurs today. If it does, we append a tuple of ([event title], [starting time]) to a list of events of the day. After we’ve generated a full list of the day’s events, we determine what items the user is missing by looking up RFIDs associated with each of the day’s events. If any RFIDs are associated with items that are missing from the user’s bag, they are added to a list of missing items for each.
+  For each event returned, we convert its starting time into a Python datetime object in order to determine if the event occurs today. If it does, we append a tuple of ([event title], [starting time]) to a list of events of the day. After we've generated a full list of the day's events, we determine what items the user is missing by looking up RFIDs associated with each of the day's events. If any RFIDs are associated with items that are missing from the user's bag, they are added to a list of missing items for each.
 
-  If the parameter “request” is set to “timed” a regularly timed check is being performed, so we need to check if any events are coming up within the next 30 minutes. If an event is in the next 30 minutes, we check if it has already been noticed by a timed check and if any items are missing from the bag. If our database does not contain an entry for the event and we’re missing items, a GET request is sent to “http://iesc-s1.mit.edu/608dev/sandbox/abhiti/designProj/sendFB.py” - which triggers a push notification to the user’s Android device notifying them that they have something missing from their bag. Additionally, the event has its name added to our RFIDs database with a nickname value corresponding to the event title. Again, this is clearly not an RFID but we store it so that we can have persistent memory of the fact that we’ve already notified the user prior to the event.
+  If the parameter "request" is set to "timed" a regularly timed check is being performed, so we need to check if any events are coming up within the next 30 minutes. If an event is in the next 30 minutes, we check if it has already been noticed by a timed check and if any items are missing from the bag. If our database does not contain an entry for the event and we're missing items, a GET request is sent to "http://iesc-s1.mit.edu/608dev/sandbox/abhiti/designProj/sendFB.py" - which triggers a push notification to the user's Android device notifying them that they have something missing from their bag. Additionally, the event has its name added to our RFIDs database with a nickname value corresponding to the event title. Again, this is clearly not an RFID but we store it so that we can have persistent memory of the fact that we've already notified the user prior to the event.
 
-  If an event is within the next 30 minutes but it exists in the database, we know that a notification prior to the event has already been sent - so, we do nothing. If an event’s start time has already passed - that is, the event has already started - it is now safe to remove the event from our database.
+  If an event is within the next 30 minutes but it exists in the database, we know that a notification prior to the event has already been sent - so, we do nothing. If an event's start time has already passed - that is, the event has already started - it is now safe to remove the event from our database.
 
-  If the parameter “request” is set to “check” a manual check is being performed. We simply look at the array of missing items and if the length is 0, return a string to the user saying “You’re all set!” If the array is non-empty, we iterate through the missing items and return a string of “[Item nickname] for [event], … [repeat as necessary]...  missing!“
+  If the parameter "request" is set to "check" a manual check is being performed. We simply look at the array of missing items and if the length is 0, return a string to the user saying "You're all set!" If the array is non-empty, we iterate through the missing items and return a string of "[Item nickname] for [event], ... [repeat as necessary]...  missing!"
 
   <u>Android GET Requests:</u>
 
@@ -183,7 +183,7 @@ The video starts off with the user scanning a new item for their 6.08 class: a b
     .
   ```
 
-  (Rest of code can be found on our GitHub.) Continued underneath code from block above. These requests are made when the Android application requires a listing of claimed/unclaimed RFIDs and the events that will be occurring within the next week. One parameter needs to be passed: “device = Android”. After an API call like that for an ESP32-triggered check, a list is made of the events occurring today or in the next week. For each of the RFIDs in our database, we append them to a the “claimed” or “unclaimed” list by the basis of whether or not the RFID is associated with a class from our just-generated list. A return string is formatted as “claimed: [claimed list]; unclaimed: [unclaimed list]; events: [events list]” for parsing and use on the Android application side.
+  (Rest of code can be found on our GitHub.) Continued underneath code from block above. These requests are made when the Android application requires a listing of claimed/unclaimed RFIDs and the events that will be occurring within the next week. One parameter needs to be passed: "device = Android". After an API call like that for an ESP32-triggered check, a list is made of the events occurring today or in the next week. For each of the RFIDs in our database, we append them to a the "claimed" or "unclaimed" list by the basis of whether or not the RFID is associated with a class from our just-generated list. A return string is formatted as "claimed: [claimed list]; unclaimed: [unclaimed list]; events: [events list]" for parsing and use on the Android application side.
 
   ###token.py
 
@@ -208,7 +208,7 @@ The video starts off with the user scanning a new item for their 6.08 class: a b
 
 Used during process of adding/removing items from bag
 
-Simply switches value of location variable if RFID exists in table, or marks RFID as being in the bag if it’s the first instance and leaves nickname, course fields blank
+Simply switches value of location variable if RFID exists in table, or marks RFID as being in the bag if it's the first instance and leaves nickname, course fields blank
 
 <b>Parameters:</b>
 
@@ -240,7 +240,7 @@ Database entries belonging to the classes returned by the Calendar fetch have th
 
 Used to update RFID event/nickname associations
 
-Possible event associations are fetched via Calendar by checking all event types in the user’s calendar - when user submits updates to RFID associations (done one at a time), updates are reflected in database
+Possible event associations are fetched via Calendar by checking all event types in the user's calendar - when user submits updates to RFID associations (done one at a time), updates are reflected in database
 
 <b>Parameters:</b>
 
@@ -270,7 +270,7 @@ Possible event associations are fetched, and RFIDs are fetched from database. Ba
 
 <b>Returns:</b>
 
-- String containing string-converted lists of claimed items, unclaimed items, and events. Formatted as “claimed: [list of claimed items]; unclaimed: [list of unclaimed items]; events: [list of event titles]”
+- String containing string-converted lists of claimed items, unclaimed items, and events. Formatted as "claimed: [list of claimed items]; unclaimed: [list of unclaimed items]; events: [list of event titles]"
 
 ###Google Calendar Usage:
 
@@ -282,7 +282,7 @@ Fetches list of events within specified calendar (listed Event return object doc
 
 # The Backpack: Hardware and Power Management
 
-The code can be found on our project's GitHub. 
+The code can be found on our project's GitHub.
 
 ### System Block Diagram
 
@@ -315,7 +315,7 @@ The code can be found on our project's GitHub.
 - Hot glue
 - Patches
 
-The ON button is connected to IO12 with a pull-up resistor, and the function button is connection to IO0. The buttons are wired and secured to the outside of the backpack in a place that would be convenient for the user. The backpack came with a USB port, which we wired to the ESP32 to charge the given battery. A rectangle was cut out of the front of the backpack, and the RFID was sewn into place. A patch that did not contain metal was then placed over the RFID, which does not hinder the RFID's read capability. An OLED was placed on the outside of the backpack, above the backpack. 
+The ON button is connected to IO12 with a pull-up resistor, and the function button is connection to IO0. The buttons are wired and secured to the outside of the backpack in a place that would be convenient for the user. The backpack came with a USB port, which we wired to the ESP32 to charge the given battery. A rectangle was cut out of the front of the backpack, and the RFID was sewn into place. A patch that did not contain metal was then placed over the RFID, which does not hinder the RFID's read capability. An OLED was placed on the outside of the backpack, above the backpack.
 
 ### ESP32 State Machine Diagram
 
@@ -402,7 +402,7 @@ Instead, we found power consumption values from the documentation of our RFID re
 - <b><a href="https://www.elecrow.com/download/MFRC522%20Datasheet.pdf">MFRC522 RFID:</a></b>~9 mA
 - <b>ESP32 DevBoard Model C:</b>
   - On with wifi connected: ~160 mA
-  - Deep Sleep with RTC timer: ~5 &micro;A 
+  - Deep Sleep with RTC timer: ~5 &micro;A
     - On the dev board, LED and serial communication chip stay on: ~25 mA
 - <b>SH1106 OLED:</b> ~30 mA
 
@@ -558,7 +558,7 @@ params.put("token",token); //POST token
 return params;
 ```
 
-Finally, this token is then accessed on the server and a POST request is made to Firbease as such (code found in databases > sendFB.py on GitHub): 
+Finally, this token is then accessed on the server and a POST request is made to Firbease as such (code found in databases > sendFB.py on GitHub):
 
 ```
 def request_handler(request):
@@ -566,13 +566,13 @@ def request_handler(request):
     c = conn.cursor()  # make cursor into database (allows us to execute commands)
     t = c.execute('''SELECT token FROM fr ORDER BY time DESC;''').fetchone()
     token = str(t[0])
-    
+
     serverKey = 'key=AAAA2jmcyUg:APA91bGvHnGTkpUjAs3mc83__bXcpsboAWCdfHmgupgKMbiqUINbi5ZnpBEXDIA3Piho02QEUtid_DymXTYHkJVaqYk38HfmuS0CuQ2GeYt6huyhwhFEIo42f6X9TbdqfA4prJ2mPbjv'
     header = {'Authorization':serverKey,'Content-Type':'application/json'}
-    
+
     fields = {'to':token,'notification':{'title':'Uh oh','body':'Looks like you forgot something!'}}
     r = requests.post(url = 'https://fcm.googleapis.com/fcm/send', headers = header, data = json.dumps(fields))
-    
+
     conn.commit() # commit commands
     conn.close() # close connection to database
     return [token,r.text]
@@ -612,7 +612,7 @@ public void onResponse(String response) {
 
 ##State Machine
 <center>
-<img src = "./statemachine.png" width=300 />
+<img src = "./statemachine.PNG" width=300 />
 </center>
 Above is the state machine for the Android app. When app is downloaded on the phone, but is not open, it is in the Background state.
 If the user presses the icon to open the app, or opens the app due to a push notification, that app switches to the Active state.
@@ -654,5 +654,5 @@ reassociate RFIDs without having to search for the number.
 
 </xmp>
 
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+<script src="https://strapdownjs.com/v/0.2/strapdown.js"></script>
 </html>
